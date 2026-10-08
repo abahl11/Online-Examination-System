@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TestDesk · Exam in progress</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo"><span class="logo-mark">T</span> <span id="room-title">Loading exam…</span></div>
+    <div class="who">
+      <span class="timer hidden" id="timer" aria-live="polite">--:--</span>
+      <button class="btn btn-warn hidden" id="submit-btn">Submit exam</button>
+    </div>
+  </header>
+
+  <div class="room hidden" id="room">
+    <aside class="panel">
+      <h3>Questions</h3>
+      <div class="palette" id="palette"></div>
+      <div class="legend"><span><i class="done"></i>Answered</span><span><i></i>Not yet</span></div>
+      <p class="muted small" style="margin-top:1rem">
+        Answers save automatically. When the timer reaches zero your exam is submitted for you.
+      </p>
+    </aside>
+
+    <section class="panel" id="question-pane"></section>
+  </div>
+
+  <div class="done-screen panel hidden" id="done">
+    <h2>Exam submitted</h2>
+    <p id="done-text" class="muted"></p>
+    <div id="done-score"></div>
+    <a class="btn" href="/student.html">Back to my dashboard</a>
+  </div>
+
+  <script src="/js/core.js"></script>
+  <script src="/js/exam-room.js"></script>
+</body>
+</html>

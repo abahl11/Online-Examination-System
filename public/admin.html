@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TestDesk · Admin</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="/admin.html"><span class="logo-mark">T</span> TestDesk</a>
+    <div class="who">
+      <span class="who-name" data-slot="user-name"></span>
+      <span class="role-tag" data-slot="user-role"></span>
+      <button class="btn btn-quiet btn-sm" data-action="sign-out">Sign out</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <nav class="sidemenu">
+      <button data-goto="overview" class="is-active">Overview</button>
+      <button data-goto="users">Users</button>
+      <button data-goto="courses">Courses</button>
+      <button data-goto="audit">Audit logs</button>
+    </nav>
+
+    <main class="workarea">
+      <section data-view="overview">
+        <div class="view-head"><h2>Platform overview</h2></div>
+        <div class="tiles" id="overview-tiles"></div>
+
+        <div class="panel">
+          <div class="view-head">
+            <h3>Exam performance</h3>
+            <div class="toolbar" style="margin:0">
+              <input id="perf-search" type="search" placeholder="Search exams…" />
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="grid">
+              <thead><tr><th>Exam</th><th>Course</th><th>Status</th><th>Attempts</th><th>Average %</th><th>High / Low</th></tr></thead>
+              <tbody id="perf-rows"></tbody>
+            </table>
+          </div>
+          <div class="pager" id="perf-pager"></div>
+        </div>
+      </section>
+
+      <section data-view="users" class="hidden">
+        <div class="view-head">
+          <h2>Users</h2>
+          <button class="btn" id="new-user">+ New user</button>
+        </div>
+        <div class="toolbar">
+          <div class="grow"><input id="user-search" type="search" placeholder="Search by name or email…" /></div>
+          <select id="user-role">
+            <option value="">All roles</option>
+            <option value="admin">Admins</option>
+            <option value="instructor">Instructors</option>
+            <option value="student">Students</option>
+          </select>
+          <select id="user-status">
+            <option value="">Any status</option>
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+          </select>
+          <select id="user-sort">
+            <option value="-createdAt">Newest first</option>
+            <option value="createdAt">Oldest first</option>
+            <option value="fullName">Name A–Z</option>
+            <option value="-fullName">Name Z–A</option>
+            <option value="-lastLoginAt">Recently active</option>
+          </select>
+        </div>
+        <div class="panel table-wrap" style="padding:0">
+          <table class="grid">
+            <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Last sign-in</th><th></th></tr></thead>
+            <tbody id="user-rows"></tbody>
+          </table>
+        </div>
+        <div class="pager" id="user-pager"></div>
+      </section>
+
+      <section data-view="courses" class="hidden">
+        <div class="view-head">
+          <h2>Courses</h2>
+          <button class="btn" id="new-course">+ New course</button>
+        </div>
+        <div class="toolbar">
+          <div class="grow"><input id="course-search" type="search" placeholder="Search by title or code…" /></div>
+          <select id="course-sort">
+            <option value="title">Title A–Z</option>
+            <option value="code">Code</option>
+            <option value="-createdAt">Newest first</option>
+          </select>
+        </div>
+        <div class="panel table-wrap" style="padding:0">
+          <table class="grid">
+            <thead><tr><th>Code</th><th>Title</th><th>Instructors</th><th></th></tr></thead>
+            <tbody id="course-rows"></tbody>
+          </table>
+        </div>
+        <div class="pager" id="course-pager"></div>
+      </section>
+
+      <section data-view="audit" class="hidden">
+        <div class="view-head"><h2>Audit logs</h2></div>
+        <div class="toolbar">
+          <div class="grow"><input id="audit-search" type="search" placeholder="Search action, entity, role or IP…" /></div>
+          <select id="audit-action">
+            <option value="">All actions</option>
+            <option value="auth.">Sign-ins &amp; sign-ups</option>
+            <option value="user.">Users</option>
+            <option value="course.">Courses</option>
+            <option value="question.">Questions</option>
+            <option value="exam.">Exams</option>
+            <option value="attempt.">Attempts</option>
+            <option value="result.">Results</option>
+          </select>
+        </div>
+        <div class="panel table-wrap" style="padding:0">
+          <table class="grid">
+            <thead><tr><th>When</th><th>Who</th><th>Action</th><th>Entity</th><th>Details</th><th>IP</th></tr></thead>
+            <tbody id="audit-rows"></tbody>
+          </table>
+        </div>
+        <div class="pager" id="audit-pager"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/js/core.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TestDesk · Instructor</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="/instructor.html"><span class="logo-mark">T</span> TestDesk</a>
+    <div class="who">
+      <span class="who-name" data-slot="user-name"></span>
+      <span class="role-tag" data-slot="user-role"></span>
+      <button class="btn btn-quiet btn-sm" data-action="sign-out">Sign out</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <nav class="sidemenu">
+      <button data-goto="courses" class="is-active">My courses</button>
+      <button data-goto="bank">Question bank</button>
+      <button data-goto="exams">Exams</button>
+    </nav>
+
+    <main class="workarea">
+      <section data-view="courses">
+        <div class="view-head"><h2>My courses</h2></div>
+        <div class="card-grid" id="course-cards"></div>
+      </section>
+
+      <section data-view="bank" class="hidden">
+        <div class="view-head">
+          <h2>Question bank</h2>
+          <button class="btn" id="new-question">+ Add question</button>
+        </div>
+        <div class="toolbar">
+          <select id="bank-course"></select>
+          <select id="bank-kind">
+            <option value="">All types</option>
+            <option value="mcq">MCQ</option>
+            <option value="coding">Coding</option>
+          </select>
+          <div class="grow"><input id="bank-search" type="search" placeholder="Search question text…" /></div>
+          <select id="bank-sort">
+            <option value="-createdAt">Newest first</option>
+            <option value="createdAt">Oldest first</option>
+            <option value="-marks">Most marks</option>
+            <option value="marks">Fewest marks</option>
+          </select>
+        </div>
+        <div class="panel table-wrap" style="padding:0">
+          <table class="grid">
+            <thead><tr><th>Question</th><th>Type</th><th>Course</th><th>Marks</th><th></th></tr></thead>
+            <tbody id="bank-rows"></tbody>
+          </table>
+        </div>
+        <div class="pager" id="bank-pager"></div>
+      </section>
+
+      <section data-view="exams" class="hidden">
+        <div class="view-head">
+          <h2>Exams</h2>
+          <button class="btn" id="new-exam">+ New exam</button>
+        </div>
+        <div class="toolbar">
+          <select id="exam-course"></select>
+          <select id="exam-status">
+            <option value="">Any status</option>
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+            <option value="closed">Closed</option>
+          </select>
+          <div class="grow"><input id="exam-search" type="search" placeholder="Search exam title…" /></div>
+          <select id="exam-sort">
+            <option value="-createdAt">Newest first</option>
+            <option value="title">Title A–Z</option>
+          </select>
+        </div>
+        <div class="panel table-wrap" style="padding:0">
+          <table class="grid">
+            <thead><tr><th>Exam</th><th>Course</th><th>Status</th><th>Duration</th><th>Questions</th><th>Results</th><th></th></tr></thead>
+            <tbody id="exam-rows"></tbody>
+          </table>
+        </div>
+        <div class="pager" id="exam-pager"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/js/core.js"></script>
+  <script src="/js/instructor.js"></script>
+</body>
+</html>

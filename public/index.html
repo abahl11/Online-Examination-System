@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TestDesk · Sign in</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <main class="gate">
+    <section class="gate-story">
+      <div class="logo" style="color:#ecfeff;margin-bottom:2rem"><span class="logo-mark">T</span> TestDesk</div>
+      <h1>Timed online exams, marked the moment you submit.</h1>
+      <ul>
+        <li>Randomised question papers with shuffled options</li>
+        <li>MCQ and coding questions, with optional negative marking</li>
+        <li>Auto-submit when the timer ends — answers save as you go</li>
+        <li>Downloadable result sheets and a leaderboard per exam</li>
+      </ul>
+    </section>
+
+    <section class="gate-form">
+      <div class="gate-card panel">
+        <div class="switcher">
+          <button type="button" data-mode="login" class="is-active">Sign in</button>
+          <button type="button" data-mode="register">Create account</button>
+        </div>
+
+        <div id="notice" class="notice hidden"></div>
+
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label for="login-email">Email</label>
+            <input id="login-email" name="email" type="email" autocomplete="username" required />
+          </div>
+          <div class="field">
+            <label for="login-password">Password</label>
+            <input id="login-password" name="password" type="password" autocomplete="current-password" required />
+          </div>
+          <button class="btn" type="submit" style="width:100%;justify-content:center">Sign in</button>
+        </form>
+
+        <form id="register-form" class="hidden" novalidate>
+          <div class="field">
+            <label for="reg-name">Full name</label>
+            <input id="reg-name" name="fullName" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="reg-email">Email</label>
+            <input id="reg-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="reg-password">Password</label>
+            <input id="reg-password" name="password" type="password" autocomplete="new-password" required />
+            <div class="muted small">At least 8 characters with a letter and a number.</div>
+          </div>
+          <button class="btn" type="submit" style="width:100%;justify-content:center">Create student account</button>
+        </form>
+
+        <p class="demo-hint">
+          Instructors and admins get their accounts from the administrator.<br />
+          API docs: <a href="/api-docs" target="_blank" rel="noopener">/api-docs</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/core.js"></script>
+  <script src="/js/sign-in.js"></script>
+</body>
+</html>

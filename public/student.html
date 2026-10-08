@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TestDesk · Student</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="/student.html"><span class="logo-mark">T</span> TestDesk</a>
+    <div class="who">
+      <span class="who-name" data-slot="user-name"></span>
+      <span class="role-tag" data-slot="user-role"></span>
+      <button class="btn btn-quiet btn-sm" data-action="sign-out">Sign out</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <nav class="sidemenu">
+      <button data-goto="exams" class="is-active">Available exams</button>
+      <button data-goto="scores">My scores</button>
+      <button data-goto="history">Exam history</button>
+    </nav>
+
+    <main class="workarea">
+      <section data-view="exams">
+        <div class="view-head"><h2>Available exams</h2></div>
+        <div class="toolbar">
+          <div class="grow"><input id="exam-search" type="search" placeholder="Search exams…" /></div>
+          <select id="exam-sort">
+            <option value="-createdAt">Newest first</option>
+            <option value="title">Title A–Z</option>
+            <option value="durationMinutes">Shortest first</option>
+          </select>
+        </div>
+        <div class="card-grid" id="exam-cards"></div>
+        <div class="pager" id="exam-pager"></div>
+      </section>
+
+      <section data-view="scores" class="hidden">
+        <div class="view-head"><h2>My scores</h2></div>
+        <div class="toolbar">
+          <select id="score-sort">
+            <option value="-createdAt">Latest first</option>
+            <option value="-percentage">Best first</option>
+          </select>
+        </div>
+        <div class="panel table-wrap" style="padding:0">
+          <table class="grid">
+            <thead><tr><th>Exam</th><th>Attempt</th><th>Score</th><th>Submitted</th><th></th></tr></thead>
+            <tbody id="score-rows"></tbody>
+          </table>
+        </div>
+        <div class="pager" id="score-pager"></div>
+      </section>
+
+      <section data-view="history" class="hidden">
+        <div class="view-head"><h2>Exam history</h2></div>
+        <div class="panel table-wrap" style="padding:0">
+          <table class="grid">
+            <thead><tr><th>Exam</th><th>Attempt</th><th>Started</th><th>Finished</th><th>Status</th><th>Score</th><th></th></tr></thead>
+            <tbody id="history-rows"></tbody>
+          </table>
+        </div>
+        <div class="pager" id="history-pager"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/js/core.js"></script>
+  <script src="/js/student.js"></script>
+</body>
+</html>
